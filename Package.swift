@@ -8,16 +8,20 @@ let package = Package(
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.55.0"),
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.0.0"),
-        .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
+        .package(url: "https://github.com/vapor/leaf.git", from: "4.1.5"),
     ],
     targets: [
         .target(
             name: "App",
             dependencies: [
-                .product(name: "Vapor", package: "vapor")
+                .product(name: "Vapor", package: "vapor"),
+                .product(name: "Fluent", package: "fluent"),
+                .product(name: "Leaf", package: "leaf"),
+                .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver")
+                
             ],
             swiftSettings: [
                 // Enable better optimizations when building in Release configuration. Despite the use of
