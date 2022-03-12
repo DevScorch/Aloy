@@ -13,7 +13,7 @@ final class ArticleModel: Model {
     // MARK: Database schema
     static let schema: String = DatabaseSchemas.articles.rawValue
     
-    @ID()
+    @ID
     var id: UUID?
     
     @Field(key: FieldKeys.title)
@@ -32,7 +32,7 @@ final class ArticleModel: Model {
     var content: String?
     
     @Parent(key: FieldKeys.category)
-    var category: [CategoryModel]
+    var category: CategoryModel
     
     @Field(key: FieldKeys.headerImage)
     var headerImage: URL?
@@ -41,13 +41,13 @@ final class ArticleModel: Model {
     var author: String?
     
     @Field(key: FieldKeys.contentState)
-    var contentState: ContentState
+    var contentState: ContentState.RawValue
     
     @Field(key: FieldKeys.contentRole)
-    var contentRole: ContentRole
+    var contentRole: ContentRole.RawValue
     
     @Field(key: FieldKeys.savedByUsers)
-    var savedByUsers: [String] = ""
+    var savedByUsers: [String]
     
     @Field(key: FieldKeys.createdAt)
     var createdAt: Date?
@@ -60,7 +60,7 @@ final class ArticleModel: Model {
     
     init() {}
     
-    init(id: UUID? = nil, title: String?, slug: String?, intro: String, excerp: String?, content: String?, headerImage: URL?, author: String?, contentState: ContentState, contentRole: ContentRole, savedByUsers: [String], createdAt: Date, updatedAt: Date, publishDate: Date, category: [CategoryModel]) {
+    init(id: UUID? = nil, title: String?, slug: String?, intro: String, excerp: String?, content: String?, headerImage: URL?, author: String?, contentState: ContentState.RawValue, contentRole: ContentRole.RawValue, savedByUsers: [String], createdAt: Date, updatedAt: Date, publishDate: Date, category: UUID) {
         self.id = id
         self.title = title
         self.slug = slug
@@ -77,5 +77,5 @@ final class ArticleModel: Model {
         self.publishDate = publishDate
         self.$category.id = category
     }
+}
 
-extension ArticleModel: Content {}

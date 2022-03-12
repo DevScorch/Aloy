@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Fluent
+import Vapor
 
-enum ContentRole: String, Equatable, Content {
+enum ContentRole: String, Equatable, Encodable {
     case article
     case course
     case podcast

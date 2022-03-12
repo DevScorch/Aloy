@@ -7,13 +7,14 @@
 
 import Foundation
 import Fluent
+import Vapor
 
-final class CategoryModel: Model {
+final class CategoryModel: Model, Content {
     // MARK: Database schema
     static let schema = DatabaseSchemas.categories.rawValue
     
     // MARK: Variables
-    @ID()
+    @ID
     var id: UUID?
     
     @Field(key: FieldKeys.title)
@@ -25,10 +26,10 @@ final class CategoryModel: Model {
     @Field(key: FieldKeys.headerImage)
     var headerImage: URL
     
-    @Children(for: \.$courses)
+    @Children(for: \.$category)
     var courses: [CourseModel]
     
-    @Children(for: \.$articles)
+    @Children(for: \.$category)
     var articles: [ArticleModel]
     
     init() {}
@@ -40,5 +41,3 @@ final class CategoryModel: Model {
     }
     
 }
-
-extension CategoryModel: Content {}

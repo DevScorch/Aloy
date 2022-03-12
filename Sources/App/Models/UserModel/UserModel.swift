@@ -8,7 +8,6 @@
 import Foundation
 import Vapor
 import Fluent
-import CloudKit
 
 final class UserModel: Model {
     
@@ -17,7 +16,7 @@ final class UserModel: Model {
     
     // MARK: Variabels
     
-    @ID()
+    @ID
     var id: UUID?
     
     @Field(key: FieldKeys.name)
@@ -60,7 +59,7 @@ final class UserModel: Model {
     var subscriptionEnd: Date
     
     @Field(key: FieldKeys.userRole)
-    var userRole: UserRole
+    var userRole: UserRole.RawValue
     
   // MARK: Empty init
     
@@ -68,7 +67,7 @@ final class UserModel: Model {
     
   // MARK: Final init
     
-    init(id: UUID? = nil, name: String?, lastname: String?, dateOfBirth: Date?, username: String, email: String, password: String, createdAt: Date, updatedAt: Date, address: String?, zip: String?, country: String?, subscribedAt: Date, subscriptionEnd: Date, userRole: UserRole) {
+    init(id: UUID? = nil, name: String?, lastname: String?, dateOfBirth: Date?, username: String, email: String, password: String, createdAt: Date, updatedAt: Date, address: String?, zip: String?, country: String?, subscribedAt: Date, subscriptionEnd: Date, userRole: UserRole.RawValue) {
         self.id = id
         self.name = name
         self.lastname = lastname
@@ -82,7 +81,7 @@ final class UserModel: Model {
         self.zip = zip
         self.country = country
         self.subscribedAt = subscribedAt
-        self.subscriptionEnd = subscribedEnd
+        self.subscriptionEnd = subscriptionEnd
         self.userRole = userRole
     }
 }

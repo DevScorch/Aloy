@@ -7,22 +7,22 @@
 
 import Foundation
 import Fluent
-import CloudKit
+import Vapor 
 
-final class SectionModel: Model {
+final class SectionModel: Model, Content {
     // MARK: Database schema
     static let schema = DatabaseSchemas.sections.rawValue
     
     // MARK: Variables
     
-    @ID()
+    @ID
     var id: UUID?
     
     @Field(key: FieldKeys.title)
     var title: String
     
     @Field(key: FieldKeys.sectionRole)
-    var sectionRole: SectionRole
+    var sectionRole: SectionRole.RawValue
     
     @Field(key: FieldKeys.createdAt)
     var createdAt: Date
@@ -31,7 +31,7 @@ final class SectionModel: Model {
     var updatedAt: Date
     
     @Field(key: FieldKeys.contentState)
-    var contentState: ContentState
+    var contentState: ContentState.RawValue
     
     @Field(key: FieldKeys.publishDate)
     var publishDate: Date?
@@ -39,12 +39,12 @@ final class SectionModel: Model {
     @Parent(key: FieldKeys.course)
     var course: CourseModel
     
-    @Children(for: \.$lectures)
+    @Children(for: \.$section)
     var lectures: [LectureModel]
     
     init() {}
     
-    init(id: UUID? = nil, title: String, sectionRole: SectionRole, createdAt: Date, updatedAt: Date, contentState: ContentState, publishDate: Date?, course: CourseModel ) {
+    init(id: UUID? = nil, title: String, sectionRole: SectionRole.RawValue, createdAt: Date, updatedAt: Date, contentState: ContentState.RawValue, publishDate: Date?, course: UUID ) {
         self.id = id
         self.title = title
         self.sectionRole = sectionRole
@@ -52,9 +52,7 @@ final class SectionModel: Model {
         self.updatedAt = updatedAt
         self.contentState = contentState
         self.publishDate = publishDate
-        self.#course.id = course
+        self.$course.id = course
     }
     
 }
-
-extension SectionModel: Content {}

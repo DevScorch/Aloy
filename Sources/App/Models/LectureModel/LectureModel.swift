@@ -7,15 +7,15 @@
 
 import Foundation
 import Fluent
-import CloudKit
+import Vapor
 
-final class LectureModel: Model {
+final class LectureModel: Model, Content {
     // MARK: Database Schema
     static let schema = DatabaseSchemas.lectures.rawValue
     
     // MARK: Variables
     
-    @ID()
+    @ID
     var id: UUID?
     
     @Field(key: FieldKeys.title)
@@ -34,7 +34,7 @@ final class LectureModel: Model {
     var publishDate: Date
     
     @Field(key: FieldKeys.contentState)
-    var contentState: ContentState
+    var contentState: ContentState.RawValue
     
     @Field(key: FieldKeys.content)
     var content: String?
@@ -44,7 +44,7 @@ final class LectureModel: Model {
     
     init() {}
     
-    init(id: UUID? = nil, title: String?, mp4URL: URL?, createdAt: Date, updatedAt: Date, publishDate: Date, contentState: ContentState, content: String?, section: SectionModel) {
+    init(id: UUID? = nil, title: String?, mp4URL: URL?, createdAt: Date, updatedAt: Date, publishDate: Date, contentState: ContentState.RawValue, content: String?, section: UUID) {
         self.id = id
         self.title = title
         self.mp4URL = mp4URL
@@ -57,4 +57,3 @@ final class LectureModel: Model {
     }
 }
 
-extension LectureModel: Content {}

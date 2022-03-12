@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Fluent
+import Vapor 
 
-enum UserRole: String, Content, Equatable {
+enum UserRole: String, Equatable {
     case admin
     case moderator
     case instructor

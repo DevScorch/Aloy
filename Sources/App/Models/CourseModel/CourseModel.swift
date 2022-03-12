@@ -16,7 +16,7 @@ final class CourseModel: Model {
     
     // MARK: Variabeles
     
-    @ID()
+    @ID
     var id: UUID?
     
     @Field(key: FieldKeys.title)
@@ -41,13 +41,13 @@ final class CourseModel: Model {
     var assetsURL: URL?
     
     @Field(key: FieldKeys.contentState)
-    var contentState: ContentState
+    var contentState: ContentState.RawValue
     
     @Field(key: FieldKeys.publishDate)
     var publishDate: Date?
     
     @Field(key: FieldKeys.contentRole)
-    var contentRole: ContentRole
+    var contentRole: ContentRole.RawValue
 
     @Field(key: FieldKeys.createdAt)
     var createdAt: Date
@@ -61,12 +61,12 @@ final class CourseModel: Model {
     @Parent(key: FieldKeys.category)
     var category: CategoryModel
     
-    @Children(for: \.$sections)
+    @Children(for: \.$course)
     var sections: [SectionModel]
     
     init() {}
     
-    init(id: UUID? = nil, title: String?, description: String? , shortDescription: String?, headerImage: URL?, article: String?, sylabus: URL?, assetsURL: URL?, contentState: ContentState, publishDate: Date?, contentRole: Content, createdAt: Date, updatedAt: Date, instructor: String, category: CategoryModel) {
+    init(id: UUID? = nil, title: String?, description: String? , shortDescription: String?, headerImage: URL?, article: String?, sylabus: URL?, assetsURL: URL?, contentState: ContentState.RawValue, publishDate: Date?, contentRole: ContentRole.RawValue, createdAt: Date, updatedAt: Date, instructor: String, category: UUID) {
         self.id = id
         self.title = title
         self.description = description

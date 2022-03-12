@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Fluent
+import Vapor
 
-enum ContentState: String, Equatable, Content {
+
+enum ContentState: String, Equatable {
     case published
     case draft
     case saved
