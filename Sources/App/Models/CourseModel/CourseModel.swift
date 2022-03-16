@@ -19,31 +19,31 @@ final class CourseModel: Model {
     @ID
     var id: UUID?
     
-    @Field(key: FieldKeys.title)
+    @OptionalField(key: FieldKeys.title)
     var title: String?
     
-    @Field(key: FieldKeys.description)
+    @OptionalField(key: FieldKeys.description)
     var description: String?
     
-    @Field(key: FieldKeys.shortDescription)
+    @OptionalField(key: FieldKeys.shortDescription)
     var shortDescription: String?
     
-    @Field(key: FieldKeys.headerImage)
+    @OptionalField(key: FieldKeys.headerImage)
     var headerImage: URL?
     
-    @Field(key: FieldKeys.article)
+    @OptionalField(key: FieldKeys.article)
     var article: String?
     
-    @Field(key: FieldKeys.sylabus)
+    @OptionalField(key: FieldKeys.sylabus)
     var sylabus: URL?
     
-    @Field(key: FieldKeys.assetsURL)
+    @OptionalField(key: FieldKeys.assetsURL)
     var assetsURL: URL?
     
     @Field(key: FieldKeys.contentState)
     var contentState: ContentState.RawValue
     
-    @Field(key: FieldKeys.publishDate)
+    @OptionalField(key: FieldKeys.publishDate)
     var publishDate: Date?
     
     @Field(key: FieldKeys.contentRole)

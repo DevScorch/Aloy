@@ -33,7 +33,7 @@ final class SectionModel: Model, Content {
     @Field(key: FieldKeys.contentState)
     var contentState: ContentState.RawValue
     
-    @Field(key: FieldKeys.publishDate)
+    @OptionalField(key: FieldKeys.publishDate)
     var publishDate: Date?
     
     @Parent(key: FieldKeys.course)

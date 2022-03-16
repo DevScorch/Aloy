@@ -18,10 +18,10 @@ final class LectureModel: Model, Content {
     @ID
     var id: UUID?
     
-    @Field(key: FieldKeys.title)
+    @OptionalField(key: FieldKeys.title)
     var title: String?
     
-    @Field(key: FieldKeys.mp4URL)
+    @OptionalField(key: FieldKeys.mp4URL)
     var mp4URL: URL?
     
     @Field(key: FieldKeys.createdAt)
@@ -30,13 +30,13 @@ final class LectureModel: Model, Content {
     @Field(key: FieldKeys.updatedAt)
     var updatedAt: Date
     
-    @Field(key: FieldKeys.publishDate)
-    var publishDate: Date
+    @OptionalField(key: FieldKeys.publishDate)
+    var publishDate: Date?
     
     @Field(key: FieldKeys.contentState)
     var contentState: ContentState.RawValue
     
-    @Field(key: FieldKeys.content)
+    @OptionalField(key: FieldKeys.content)
     var content: String?
     
     @Parent(key: FieldKeys.section)
@@ -44,7 +44,7 @@ final class LectureModel: Model, Content {
     
     init() {}
     
-    init(id: UUID? = nil, title: String?, mp4URL: URL?, createdAt: Date, updatedAt: Date, publishDate: Date, contentState: ContentState.RawValue, content: String?, section: UUID) {
+    init(id: UUID? = nil, title: String?, mp4URL: URL?, createdAt: Date, updatedAt: Date, publishDate: Date?, contentState: ContentState.RawValue, content: String?, section: UUID) {
         self.id = id
         self.title = title
         self.mp4URL = mp4URL

@@ -16,28 +16,28 @@ final class ArticleModel: Model {
     @ID
     var id: UUID?
     
-    @Field(key: FieldKeys.title)
+    @OptionalField(key: FieldKeys.title)
     var title: String?
     
-    @Field(key: FieldKeys.slug)
+    @OptionalField(key: FieldKeys.slug)
     var slug: String?
     
-    @Field(key: FieldKeys.intro)
+    @OptionalField(key: FieldKeys.intro)
     var intro: String?
     
-    @Field(key: FieldKeys.excerp)
+    @OptionalField(key: FieldKeys.excerp)
     var excerp: String?
     
-    @Field(key: FieldKeys.content)
+    @OptionalField(key: FieldKeys.content)
     var content: String?
     
-    @Parent(key: FieldKeys.category)
-    var category: CategoryModel
+    @Parent(key: FieldKeys.categories)
+    var categories: CategoryModel
     
-    @Field(key: FieldKeys.headerImage)
+    @OptionalField(key: FieldKeys.headerImage)
     var headerImage: URL?
     
-    @Field(key: FieldKeys.author)
+    @OptionalField(key: FieldKeys.author)
     var author: String?
     
     @Field(key: FieldKeys.contentState)
@@ -46,8 +46,8 @@ final class ArticleModel: Model {
     @Field(key: FieldKeys.contentRole)
     var contentRole: ContentRole.RawValue
     
-    @Field(key: FieldKeys.savedByUsers)
-    var savedByUsers: [String]
+    @OptionalField(key: FieldKeys.savedByUsers)
+    var savedByUsers: [String]?
     
     @Field(key: FieldKeys.createdAt)
     var createdAt: Date?
@@ -55,12 +55,12 @@ final class ArticleModel: Model {
     @Field(key: FieldKeys.updatedAt)
     var updatedAt: Date?
     
-    @Field(key: FieldKeys.publishDate)
+    @OptionalField(key: FieldKeys.publishDate)
     var publishDate: Date?
     
     init() {}
     
-    init(id: UUID? = nil, title: String?, slug: String?, intro: String, excerp: String?, content: String?, headerImage: URL?, author: String?, contentState: ContentState.RawValue, contentRole: ContentRole.RawValue, savedByUsers: [String], createdAt: Date, updatedAt: Date, publishDate: Date, category: UUID) {
+    init(id: UUID? = nil, title: String?, slug: String?, intro: String, excerp: String?, content: String?, headerImage: URL?, author: String?, contentState: ContentState.RawValue, contentRole: ContentRole.RawValue, savedByUsers: [String]?, createdAt: Date, updatedAt: Date, publishDate: Date, categories: UUID) {
         self.id = id
         self.title = title
         self.slug = slug
@@ -75,7 +75,7 @@ final class ArticleModel: Model {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.publishDate = publishDate
-        self.$category.id = category
+        self.$categories.id = categories
     }
 }
 

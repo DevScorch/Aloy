@@ -21,7 +21,6 @@ struct CategoryMigration: AsyncMigration {
             .field(keys.title, .string, .required)
             .field(keys.slug, .string, .required)
             .field(keys.headerImage, .string, .required)
-            .foreignKey(ArticleModel.FieldKeys.category, references: dbSchema, .id, onDelete: DatabaseSchema.ForeignKeyAction.setNull, onUpdate: .cascade)
             .unique(on: keys.slug)
             .create()
     }

@@ -59,7 +59,7 @@ extension ArticleModel {
         static var intro: FieldKey {"intro"}
         static var excerp: FieldKey {"excerp"}
         static var content: FieldKey {"content"}
-        static var category: FieldKey {"category"}
+        static var categories: FieldKey {"category"}
         static var headerImage: FieldKey {"headerImage"}
         static var author: FieldKey {"author"}
         static var contentState: FieldKey {"contentState"}

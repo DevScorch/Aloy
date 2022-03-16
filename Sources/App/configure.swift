@@ -25,16 +25,20 @@ public func configure(_ app: Application) throws {
     
     // PSQL database setup
     
-    app.databases.use(.postgres(hostname: Environment.get("DATABASE_HOST") ?? "localhost", username: Environment.get("DATABASE_USER") ?? "vapor_username", password: Environment.get("DATABASE_PASSWORD") ?? "vapor_password", database: Environment.get("DATABASE_NAME" )), as: .psql)
+    app.databases.use(.postgres(hostname: Environment.get("DATABASE_HOST") ?? "localhost", username: Environment.get("DATABASE_USER") ?? "vapor_username", password: Environment.get("DATABASE_PASSWORD") ?? "vapor_password", database: Environment.get("DATABASE_NAME") ?? "vapor_database"), as: .psql)
     
     // MARK: Migrations
     
-    app.migrations.add(UserMigration())
     app.migrations.add(CategoryMigration())
+    app.migrations.add(UserMigration())
     app.migrations.add(ArticleMigration())
     app.migrations.add(CourseMigration())
     app.migrations.add(SectionMigration())
     app.migrations.add(LectureMigration())
+    
+    // MARK: Seeds
+    
+    app.migrations.add(CreateAdminSeed())
     
     // MARK: Logging
     

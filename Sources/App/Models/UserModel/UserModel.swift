@@ -9,7 +9,7 @@ import Foundation
 import Vapor
 import Fluent
 
-final class UserModel: Model {
+final class UserModel: Model, Content {
     
     // MARK: Database Schema
     static let schema = DatabaseSchemas.users.rawValue
@@ -18,14 +18,14 @@ final class UserModel: Model {
     
     @ID
     var id: UUID?
-    
-    @Field(key: FieldKeys.name)
+
+    @OptionalField(key: FieldKeys.name)
     var name: String?
     
-    @Field(key: FieldKeys.lastname)
+    @OptionalField(key: FieldKeys.lastname)
     var lastname: String?
     
-    @Field(key: FieldKeys.lastname)
+    @OptionalField(key: FieldKeys.lastname)
     var dateOfBirth: Date?
     
     @Field(key: FieldKeys.username)
@@ -43,20 +43,20 @@ final class UserModel: Model {
     @Field(key: FieldKeys.updatedAt)
     var updatedAt: Date
     
-    @Field(key: FieldKeys.address)
+    @OptionalField(key: FieldKeys.address)
     var address: String?
     
-    @Field(key: FieldKeys.zip)
+    @OptionalField(key: FieldKeys.zip)
     var zip: String?
     
-    @Field(key: FieldKeys.country)
+    @OptionalField(key: FieldKeys.country)
     var country: String?
     
-    @Field(key: FieldKeys.subscribedAt)
-    var subscribedAt: Date
+    @OptionalField(key: FieldKeys.subscribedAt)
+    var subscribedAt: Date?
     
-    @Field(key: FieldKeys.subscriptionEnd)
-    var subscriptionEnd: Date
+    @OptionalField(key: FieldKeys.subscriptionEnd)
+    var subscriptionEnd: Date?
     
     @Field(key: FieldKeys.userRole)
     var userRole: UserRole.RawValue
@@ -67,7 +67,7 @@ final class UserModel: Model {
     
   // MARK: Final init
     
-    init(id: UUID? = nil, name: String?, lastname: String?, dateOfBirth: Date?, username: String, email: String, password: String, createdAt: Date, updatedAt: Date, address: String?, zip: String?, country: String?, subscribedAt: Date, subscriptionEnd: Date, userRole: UserRole.RawValue) {
+    init(id: UUID? = nil, name: String?, lastname: String?, dateOfBirth: Date?, username: String, email: String, password: String, createdAt: Date, updatedAt: Date, address: String?, zip: String?, country: String?, subscribedAt: Date?, subscriptionEnd: Date?, userRole: UserRole.RawValue) {
         self.id = id
         self.name = name
         self.lastname = lastname
@@ -84,8 +84,58 @@ final class UserModel: Model {
         self.subscriptionEnd = subscriptionEnd
         self.userRole = userRole
     }
+    
+    init(username: String, email: String, password: String, createdAt: Date, updatedAt: Date, userRole: UserRole.RawValue) {
+        self.username = username
+        self.password = password
+        self.email = email
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.userRole = userRole
+    }
+    
+    final class Public: Content {
+        var id: UUID?
+        var username: String
+        var email: String
+        var createdAt: Date
+        
+        init(id: UUID?, username: String, email: String, createdAt: Date) {
+            self.id = id
+            self.username = username
+            self.email = email
+            self.createdAt = createdAt
+        }
+    }
 }
 
-extension UserModel: Content {
-    
+extension UserModel {
+    func convertToPublic() -> UserModel.Public {
+        return UserModel.Public(id: id, username: username, email: email, createdAt: createdAt)
+    }
+}
+
+extension EventLoopFuture where Value: UserModel {
+    func convertToPublic() -> EventLoopFuture<UserModel.Public> {
+        return self.map { user in
+            return user.convertToPublic()
+            
+        }
+    }
+}
+
+extension Collection where Element: UserModel {
+    func convertToPublic() -> [UserModel.Public] {
+        return self.map {
+            $0.convertToPublic()
+        }
+    }
+}
+
+extension EventLoopFuture where Value == Array<UserModel> {
+    func convertToPublic() -> EventLoopFuture<[UserModel.Public]> {
+        return self.map {
+            $0.convertToPublic()
+        }
+    }
 }

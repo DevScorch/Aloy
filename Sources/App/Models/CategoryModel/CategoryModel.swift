@@ -29,7 +29,7 @@ final class CategoryModel: Model, Content {
     @Children(for: \.$category)
     var courses: [CourseModel]
     
-    @Children(for: \.$category)
+    @Children(for: \.$categories)
     var articles: [ArticleModel]
     
     init() {}
