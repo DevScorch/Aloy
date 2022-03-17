@@ -18,4 +18,5 @@ enum DatabaseSchemas: String {
     case tutorials
     case users
     case categories
+    case tokens
 }

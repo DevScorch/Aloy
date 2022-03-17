@@ -99,19 +99,41 @@ final class UserModel: Model, Content {
         var username: String
         var email: String
         var createdAt: Date
+        var name: String?
+        var updatedAt: Date
         
-        init(id: UUID?, username: String, email: String, createdAt: Date) {
+        init(id: UUID?, username: String, email: String, createdAt: Date, name: String?, updatedAt: Date) {
             self.id = id
             self.username = username
             self.email = email
             self.createdAt = createdAt
+            self.name = name
+            self.updatedAt = updatedAt
+            
         }
     }
 }
 
+extension UserModel: Authenticatable {}
+
+extension UserModel: ModelAuthenticatable {
+    
+    
+    static let usernameKey = \UserModel.$email
+    static let passwordHashKey = \UserModel.$password
+    
+    func verify(password: String) throws -> Bool {
+        try Bcrypt.verify(password, created: self.password)
+    }
+}
+
+extension UserModel: ModelSessionAuthenticatable {}
+extension UserModel: ModelCredentialsAuthenticatable {}
+
+
 extension UserModel {
     func convertToPublic() -> UserModel.Public {
-        return UserModel.Public(id: id, username: username, email: email, createdAt: createdAt)
+        return UserModel.Public(id: id, username: username, email: email, createdAt: createdAt, name: name, updatedAt: updatedAt)
     }
 }
 
@@ -139,3 +161,4 @@ extension EventLoopFuture where Value == Array<UserModel> {
         }
     }
 }
+

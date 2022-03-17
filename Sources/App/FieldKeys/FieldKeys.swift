@@ -29,6 +29,14 @@ extension UserModel {
     }
 }
 
+extension TokenModel {
+    //MARK: FieldKeys
+    struct FieldKeys {
+        static var value: FieldKey {"value"}
+        static var userID: FieldKey {"userID"}
+    }
+}
+
 extension CourseModel {
     // MARK: Course FieldKeys
     
