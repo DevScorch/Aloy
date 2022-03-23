@@ -9,7 +9,7 @@ import Foundation
 import Fluent
 import Vapor
 
-struct CreateCourse: Content {
+struct NewCourse: Content {
     let title: String?
     let description: String?
     let shortDescription: String?

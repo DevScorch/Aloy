@@ -14,7 +14,6 @@ struct GetAllCoursesService {
     static func retrieveAllCourses(_ req: Request) throws -> EventLoopFuture<[CourseModel]> {
         let courses = CourseModel.query(on: req.db)
             .all()
-        
         return courses
     }
 }
