@@ -12,7 +12,7 @@ import Fluent
 struct UpdateSectionService {
     
     static func updateSection(_ sectionID: String, _ updateSection: UpdateSection, _ req: Request) throws -> EventLoopFuture<SectionModel> {
-        let uuid = UUID(uuidString: sectionID)
+        let uuid = UUID(uuidString: sectionID)!
         
         return SectionModel.find(uuid, on: req.db)
             .unwrap(or: Abort(.notFound))

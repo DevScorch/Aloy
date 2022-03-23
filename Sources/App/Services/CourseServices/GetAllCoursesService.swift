@@ -12,8 +12,17 @@ import Vapor
 struct GetAllCoursesService {
     
     static func retrieveAllCourses(_ req: Request) throws -> EventLoopFuture<[CourseModel]> {
-        let courses = CourseModel.query(on: req.db)
+        let contentState = ContentState.published.rawValue
+        let user = try req.auth.require(UserModel.self)
+    
+        let userRetrievedCourses = CourseModel.query(on: req.db)
+            .filter(\.$contentState == contentState)
+            .sort(\.$createdAt)
             .all()
-        return courses
+        
+        let adminRetrievedCourses = CourseModel.query(on: req.db)
+            .sort(\.$createdAt)
+            .all()
+        return user.userRole == UserRole.admin.rawValue ? adminRetrievedCourses : userRetrievedCourses
     }
 }

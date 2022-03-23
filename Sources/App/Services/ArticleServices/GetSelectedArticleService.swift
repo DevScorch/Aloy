@@ -9,15 +9,14 @@ import Foundation
 import Vapor
 import Fluent
 
-struct GetSelectedLectureService {
+struct GetSelectedArticleService {
     
-    static func getSelectedLecture(_ lectureID: String, _ req: Request) throws -> EventLoopFuture<LectureModel> {
-        let uuid = UUID(uuidString: lectureID)!
+    static func getSelectedArticle(_ articleID: String, _ req: Request) throws -> EventLoopFuture<ArticleModel?> {
+        let uuid = UUID(uuidString: articleID)!
         let contentState = ContentState.published.rawValue
-        return LectureModel.query(on: req.db)
+        return ArticleModel.query(on: req.db)
             .filter(\.$id == uuid)
             .filter(\.$contentState == contentState)
             .first()
-            .unwrap(or: Abort(.notFound))
     }
 }

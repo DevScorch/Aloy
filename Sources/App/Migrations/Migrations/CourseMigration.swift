@@ -31,6 +31,7 @@ struct CourseMigration: AsyncMigration {
             .field(keys.assetsURL, .string)
             .field(keys.sylabus, .string)
             .field(keys.description, .string)
+            .field(keys.category, .uuid)
             .create()
     }
     

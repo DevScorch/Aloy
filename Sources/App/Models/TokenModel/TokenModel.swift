@@ -9,7 +9,7 @@ import Foundation
 import Fluent
 import Vapor
 
-final class TokenModel: Model {
+final class TokenModel: Model, Content {
     static let schema = DatabaseSchemas.tokens.rawValue
     
     @ID
@@ -28,7 +28,7 @@ final class TokenModel: Model {
     init(id: UUID? = nil, value: String, userID: UserModel.IDValue) {
         self.id = id
         self.value = value
-        self.userID.id = userID
+        self.$userID.id = userID
     }
 }
 extension TokenModel {
@@ -45,6 +45,6 @@ extension TokenModel: ModelTokenAuthenticatable {
     typealias User = App.UserModel
     
     var isValid: Bool {
-        return isValid
+        true 
     }
 }

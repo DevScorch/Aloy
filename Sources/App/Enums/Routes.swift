@@ -10,6 +10,11 @@ import Foundation
 enum API: String, Equatable {
     case users = "users"
     case courses = "courses"
+    case course = "course"
+    case sections = "sections"
+    case lectures = "lectures"
+    case categories = "categories"
+    case login = "login"
 }
 
 enum Endpoints: String, Equatable {

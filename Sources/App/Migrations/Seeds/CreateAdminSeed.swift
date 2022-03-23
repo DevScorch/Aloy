@@ -12,7 +12,7 @@ import Vapor
 struct CreateAdminSeed: AsyncMigration {
     
     func prepare(on database: Database) async throws {
-        let admin = UserModel(id: nil, name: "Johan", lastname: "Tsas", dateOfBirth: nil, username: "admin", email: "johan@devscorch.com", password: "Test12345", createdAt: Date(), updatedAt: Date(), address: nil, zip: nil, country: nil, subscribedAt: Date(), subscriptionEnd: Date(), userRole: UserRole.admin.rawValue)
+        let admin = UserModel(id: nil, name: "Johan", lastname: "Tsas", dateOfBirth: nil, username: "admin", email: "johan@devscorch.com", password: try Bcrypt.hash("Test12345"), createdAt: Date(), updatedAt: Date(), address: nil, zip: nil, country: nil, subscribedAt: Date(), subscriptionEnd: Date(), userRole: UserRole.admin.rawValue)
             
         try await admin.create(on: database)
     }

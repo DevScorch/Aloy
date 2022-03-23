@@ -27,8 +27,6 @@ struct UserController {
     // MARK: This returns a selected User
     
     func retrieveSelectedUser(_ req: Request) throws -> EventLoopFuture<UserModel.Public> {
-        
-        try UserModel.Access.require(.user, .student, on: req)
         let userID = req.parameters.get("userID" )
         return try GetSelectedUserService.getSelectedUser(userID!, req)
     }

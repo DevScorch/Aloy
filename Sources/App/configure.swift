@@ -35,6 +35,7 @@ public func configure(_ app: Application) throws {
     app.migrations.add(CourseMigration())
     app.migrations.add(SectionMigration())
     app.migrations.add(LectureMigration())
+    app.migrations.add(TokenMigration())
     
     // MARK: Seeds
     

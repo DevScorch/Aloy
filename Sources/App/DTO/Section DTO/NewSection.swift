@@ -9,7 +9,7 @@ import Foundation
 import Fluent
 import Vapor
 
-struct NewSection {
+struct NewSection: Content {
     let title: String
     let sectionRole: SectionRole.RawValue
     let contentState: ContentState.RawValue
