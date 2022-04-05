@@ -10,10 +10,23 @@
 
     <!-- Custom CSS-->
     <link href="../css/login.css" rel="stylesheet">
+    <link href="../css/article.css" rel="stylesheet">
+    <link href="../css/article-card.css" rel="stylesheet">
+    <link href="../css/category-bubble" rel="stylesheet">
+    
+
+    <!--Fonts-->
+    <link href="../fonts/fonts.css" rel="stylesheet">
+
+
+    <!---->
+
+    
 
     <title>#(title)</title>
   </head>
   <body>
+  #import("content")
       
     <!-- Optional JavaScript; choose one of the two! -->
 

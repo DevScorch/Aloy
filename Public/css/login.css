@@ -1,9 +1,56 @@
-
 body {
     background-color: rgb(31, 31, 31);
 }
 
+label {
+    color: white;
+}
+
+.main-container {}
+
+.form-group {
+    margin-top: 30px;
+}
+
+.form-control {
+    background-color: rgb(50, 50, 50);
+    border-radius: 10px;
+    height: 45px;
+    border-color: transparent;
+}
+
 .login-card {
     background-color: rgb(38, 38, 38);
-    
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 15px;
+}
+
+.login-title {
+    color: white;
+    text-align: center;
+}
+
+.btn-login {
+    background-image: linear-gradient(to right, #36D1DC 0%, #5B86E5 51%, #36D1DC 100%)
+}
+
+.btn-login {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px 45px;
+    transition: 0.5s;
+    background-size: 200%;
+    color: white;
+    box-shadow: 0 0 20px black;
+    border-radius: 15px;
+}
+
+.btn-login:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }

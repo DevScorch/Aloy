@@ -14,6 +14,12 @@ func routes(_ app: Application) throws {
     let guardMiddleWare = UserModel.guardMiddleware()
     let tokenAuthGroup = app.grouped(tokenAuth, guardMiddleWare)
     
+    
+    
+    // MARK: CredentialAuthenticator
+    
+    let credentialsAuthRoute = app.grouped(UserModel.credentialsAuthenticator())
+    
     // MARK: Controllers
     let userController = UserController()
     let courseController = CourseController()
@@ -28,8 +34,9 @@ func routes(_ app: Application) throws {
     
     // MARK: Admin Dashboard endpoints
     
-    basicAuthGroup.get(use: dashboardController.renderAdminIndex)
-    basicAuthGroup.get("aloy-admin", "login", use: dashboardLoginController.renderAdminLoginView)
+    app.routes.get(use: dashboardController.renderAdminIndex)
+    app.routes.get("aloy-admin", "login", use: dashboardLoginController.renderAdminLoginView)
+    credentialsAuthRoute.post("aloy-admin", "login", use: dashboardLoginController.adminLoginPostHandler)
     
     
     // MARK: User endpoints

@@ -21,4 +21,13 @@ struct DashboardLoginController {
         }
         return try await req.view.render("aloy-admin/login", context)
     }
+    
+    func adminLoginPostHandler(_ req: Request) throws -> EventLoopFuture<Response> {
+        if req.auth.has(UserModel.self) {
+            return req.eventLoop.future(req.redirect(to: "aloy-admin/index"))
+        } else {
+            let context = LoginContext(loginError: true)
+            return req.view.render("aloy-admin/login", context).encodeResponse(for: req)
+        }
+    }
 }
