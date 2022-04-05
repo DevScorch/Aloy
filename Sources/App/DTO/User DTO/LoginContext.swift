@@ -10,7 +10,7 @@ import Vapor
 import Fluent
 
 struct LoginContext: Encodable {
-    let title = "Log in"
+    let title = totalTitle + "Login"
     let loginError: Bool
     
     init(loginError: Bool = false) {

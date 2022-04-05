@@ -13,7 +13,7 @@ extension UserModel {
         static func require(_ userRoles: UserRole..., on req: Request) throws {
             let user = try req.auth.require(UserModel.self)
             if user.userRole == UserRole.admin.rawValue {return} else {
-                // Do something
+
             }
         }
     }

@@ -21,6 +21,16 @@ func routes(_ app: Application) throws {
     let sectionController = SectionController()
     let categoryController = CategoryController()
     
+    // MARK: Admin Dashboard Controllers
+    
+    let dashboardController = DashboardController()
+    let dashboardLoginController = DashboardLoginController()
+    
+    // MARK: Admin Dashboard endpoints
+    
+    basicAuthGroup.get(use: dashboardController.renderAdminIndex)
+    basicAuthGroup.get("aloy-admin", "login", use: dashboardLoginController.renderAdminLoginView)
+    
     
     // MARK: User endpoints
     basicAuthGroup.post("\(API.users.rawValue)", "\(Endpoints.create.rawValue)", use: userController.createUser)
