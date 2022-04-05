@@ -8,7 +8,6 @@
 import Foundation
 import Vapor
 import Fluent
-import AsyncHTTPClient
 
 struct DashboardLoginController {
     
@@ -16,13 +15,10 @@ struct DashboardLoginController {
         let context: LoginContext
         
         if let error = req.query[Bool.self, at: "error"], error {
-            context = LoginContext(loginError: true)
-            return try await req.view.render("/aloy-admin/login", context)
+            context = LoginContext(loginError: false)
         } else {
-            let context = AdminLoginContext(title: "Devscorch 4.0 | Login", emailField: "email", passwordField: "password", logoURL: "/images/logo.png")
-            return try await req.view.render("/aloy-admin/index", context)
+            context = LoginContext()
         }
+        return try await req.view.render("aloy-admin/login", context)
     }
-    
-
 }
