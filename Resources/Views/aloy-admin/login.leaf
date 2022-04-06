@@ -4,11 +4,12 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl=12"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"></div>
-                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                            <div class="card login-card">
+                    <div class="row ">
+                        <div class="col-sm-12  col-lg-4 col-xl-4"></div>
+                        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                            <div class="card login-card ">
                                 <div class="card-body">
+                                <img class="logo" src="../images/devscorch.png">
                                 <h3 class="login-title">Aloy Login</h3>
                                 #if(loginError):
                                     <div class="alert alert-danger" role="alert">
@@ -16,21 +17,22 @@
                                         password was invalid.
                                     </div>      
                                 #endif
-                                    <form method="post">
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" email="email" class="form-control" id="email"/>
+                                    <form method="post" >
+                                        <div class="form-group ">
+                                            <label class="form-label" for="email">Email</label>
+                                            <input type="text" email="email" class="form-control" id="email" placeholder="Enter email"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" password="password" class="form-control" id="password"/>
+                                            <label class="form-label" for="password">Password</label>
+                                            <input type="password" password="password" class="form-control" id="password" placeholder="Your password"/>
                                         </div>       
+                                            <p class="disclaimer">This logs you into the Aloy admin dashboard. This is not accessable by users.</p>
                                             <button type="submit" class="btn btn-pimary btn-login"> Sign in </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"></div>
+                        <div class="col-sm-12 col-lg-4 col-xl-4"></div>
                     </div>
                 </div>  
         #endexport

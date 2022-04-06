@@ -43,7 +43,7 @@ struct DashboardController {
             
             let context = DashboardContext(title: totalTitle + dashboard, logoURL: "", users: users, courses: courses, lectures: lectures, activeSubscriptions: activeSubscriptions, totalUsers: totalUsers)
             print(context)
-            return try await req.view.render("aloy-admin/index.leaf", context)
+            return try await req.view.render("aloy-admin/index", context)
         } else {
             
             return try await req.view.render("/aloy-admin/login")

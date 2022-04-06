@@ -1,5 +1,7 @@
 #extend("base"):
     #export("content"):
-        
+        <div class="main-container" {
+            
+        }
     #endexport
 #endextend

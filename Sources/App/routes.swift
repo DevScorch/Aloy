@@ -34,7 +34,7 @@ func routes(_ app: Application) throws {
     
     // MARK: Admin Dashboard endpoints
     
-    app.routes.get(use: dashboardController.renderAdminIndex)
+    app.routes.get("aloy-admin", "index", use: dashboardController.renderAdminIndex)
     app.routes.get("aloy-admin", "login", use: dashboardLoginController.renderAdminLoginView)
     credentialsAuthRoute.post("aloy-admin", "login", use: dashboardLoginController.adminLoginPostHandler)
     
