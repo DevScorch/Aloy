@@ -11,10 +11,7 @@ import Fluent
 
 struct DashboardController {
     
-    func renderAdminIndex(_ req: Request) async throws -> View {        
-        if req.auth.has(UserModel.self) {
-            try UserModel.Access.require(.admin, on: req)
-            
+    func renderAdminIndex(_ req: Request) async throws -> View {
             let users = try await UserModel.query(on: req.db)
                 .all()
                 .flatMap { user in
@@ -44,14 +41,5 @@ struct DashboardController {
             let context = DashboardContext(title: totalTitle + dashboard, logoURL: "", users: users, courses: courses, lectures: lectures, activeSubscriptions: activeSubscriptions, totalUsers: totalUsers)
             print(context)
             return try await req.view.render("aloy-admin/index", context)
-        } else {
-            
-            return try await req.view.render("/aloy-admin/login")
-        }
-        
-        
-   
     }
-    
-    
 }

@@ -12,7 +12,9 @@
     <link href="../css/login.css" rel="stylesheet">
     <link href="../css/article.css" rel="stylesheet">
     <link href="../css/article-card.css" rel="stylesheet">
-    <link href="../css/category-bubble" rel="stylesheet">
+    <link href="../css/category-bubble.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/nav.css" rel="stylesheet">
     
 
     <!--Fonts-->

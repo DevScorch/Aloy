@@ -1,4 +1,4 @@
-#extend("base"):
+#extend("aloy-admin/base"):
     #export("content"):
                 <div class="main-container">
                     <div class="row">
