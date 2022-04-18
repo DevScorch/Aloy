@@ -1,0 +1,10 @@
+<nav class="nav flex-column">
+    <a class="nav-link active" href="#">Dashboard</a>
+    <a class="nav-link" href="#">Users</a>
+    <a class="nav-link" href="#">Subscriptions</a>
+    <a class="nav-link disabled" href="#">Courses</a>
+    <a class="nav-link disabled" href="#">Categories</a>
+    <a class="nav-link disabled" href="#">Articles</a>
+
+
+</nav>

@@ -1,0 +1,80 @@
+body {
+    background-color: rgb(240, 240, 245);
+}
+
+label {
+    color: white;
+}
+
+.disclaimer {
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.main-container {
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    display: block;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.form-control {
+    border-radius: 10px;
+    height: 55px;
+    border-color: transparent;
+}
+
+.form-label {
+    margin-bottom: 10px;
+}
+
+.login-card {
+    background-color: rgb(50, 50, 50);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 15px;
+    max-width: 450px;
+}
+
+.login-title {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-login {
+    background-image: linear-gradient(to right, #36D1DC 0%, #5B86E5 51%, #36D1DC 100%);
+    text-align: center;
+    margin-top: 20px;
+    transition: 0.5s;
+    background-size: 200%;
+    color: white;
+    box-shadow: 0 0 20px black;
+    border-radius: 15px;
+    width: 200px;
+    height: 45px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn-login:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
