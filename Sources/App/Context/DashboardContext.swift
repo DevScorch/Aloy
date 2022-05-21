@@ -13,8 +13,8 @@ struct DashboardContext: Content {
     let title: String
     let logoURL: String 
     let users: [UserModel.Public]
-    let courses: [CourseModel]
-    let lectures: [LectureModel]
+    let courses: Int
+    let lectures: Int
     let activeSubscriptions: Int
     let totalUsers: Int
     

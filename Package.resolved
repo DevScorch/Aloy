@@ -137,6 +137,15 @@
         }
       },
       {
+        "package": "swift-html",
+        "repositoryURL": "https://github.com/binarybirds/swift-html",
+        "state": {
+          "branch": null,
+          "revision": "e07678a77d296e66fa891a9d4d08acc4471d1783",
+          "version": "1.6.11"
+        }
+      },
+      {
         "package": "swift-log",
         "repositoryURL": "https://github.com/apple/swift-log.git",
         "state": {

@@ -1,10 +1,62 @@
-<nav class="nav flex-column">
-    <a class="nav-link active" href="#">Dashboard</a>
-    <a class="nav-link" href="#">Users</a>
-    <a class="nav-link" href="#">Subscriptions</a>
-    <a class="nav-link disabled" href="#">Courses</a>
-    <a class="nav-link disabled" href="#">Categories</a>
-    <a class="nav-link disabled" href="#">Articles</a>
-
-
-</nav>
+<main>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white  main-background" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-4">Devscorch</span>
+        </a>
+        <hr>
+        <h6>Dashboard</h6>
+        <ul class="nav nav-pills flex-column mb-auto">
+        
+        <li class="#if(title == "Devscorch 4.0 | Dashboard"): active #endif">
+            <a href="/aloy-admin/index" class="nav-link">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            Dashboard
+            </a>
+        </li>
+        <li class="#if(title == "Devscorch 4.0 | Course Builder"): active #endif">
+            <a href="#" class="nav-link">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+            Courses
+            </a>
+        </li>
+        <li class="#if(title == "Devscorch 4.0 | Users"): active #endif">
+            <a href="#" class="nav-link">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+            Users
+            </a>
+        </li>
+        <li class="#if(title == "Devscorch 4.0 | Articles"): active #endif">
+            <a href="#" class="nav-link">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#article"/></svg>
+            Articles
+            </a>
+        </li>
+        <li class="#if(title == "Devscorch 4.0 | Podcasts"): active #endif">
+            <a href="#" class="nav-link">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#podcast"/></svg>
+            Podcasts
+            </a>
+        </li>
+        <li class="#if(title == "Devscorch 4.0 | Media Manager"): active #endif">
+            <a href="#" class="nav-link">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#media-manager"/></svg>
+            Media Manager
+            </a>
+        </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>mdo</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+        </div>
+    </div>
+</main>
